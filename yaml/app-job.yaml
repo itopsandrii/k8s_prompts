@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: data-sync-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: sync
+          image: alpine
+          command: ["sh", "-c", "cp /host/data/* /data/"]
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+            - name: host-data
+              mountPath: /host/data
+      restartPolicy: OnFailure
+      volumes:
+        - name: data-volume
+          emptyDir: {}
+        - name: host-data
+          hostPath:
+            path: /path/on/host
+            type: Directory
