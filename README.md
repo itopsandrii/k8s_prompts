@@ -1,4 +1,18 @@
-1 Create pod expose port 8000 image ghcr.io/itopsandrii/http_responce:2.0.0
-2 Create livenessProbe expose port 8080
-3 Create readinessProbe expose port 8000. Image ghcr.io/itopsandrii/http_responce:2.0.0
-4 Create a pod with liveness and readiness probe, both exposed for 8080 port. Liveness - /healthy, readiness - /ready. With volumeMounts to /data.
+# Kubernetes Manifests & Prompt Engineering Portfolio
+
+This repository contains a set of Kubernetes YAML manifests generated from well-designed English prompts for use with AI tools (e.g., ChatGPT, kubectl-ai).  
+For each manifest, you will find the original prompt, a description, and a link to the example YAML file in the `yaml` directory.
+
+| NAME                     | PROMPT                                                                                                                        | DESCRIPTION                                                           | EXAMPLE                                       |
+|--------------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|-----------------------------------------------|
+| app.yaml                 | Create pod expose port 8000 image ghcr.io/itopsandrii/http_responce:2.0.0                                                     | Pod that runs http_responce image and exposes port 8000               | [app.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app.yaml)                   |
+| app-livenessProbe.yaml   | Create livenessProbe expose port 8080                                                                                         | Pod with livenessProbe that checks port 8080                          | [app-livenessProbe.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-livenessProbe.yaml)   |
+| app-readinessProbe.yaml  | Create a Kubernetes Pod with a container running image gcr.io/k8s-k3s/demo:v2.0.0 named app. Add livenessProbe on path / and readinessProbe on path /ready, both on port 8000. Expose port 8000 and name it http. Use reasonable probe settings. | Pod with livenessProbe (/) and readinessProbe (/ready) on port 8000   | [app-readinessProbe.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-readinessProbe.yaml) |
+| app-volumeMounts.yaml    | Create a pod with liveness and readiness probe, both exposed for 8080 port. Liveness - /healthy, readiness - /ready. With volumeMounts to /data. | Pod with livenessProbe and readinessProbe on port 8080 and volumeMount to /data | [app-volumeMounts.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-volumeMounts.yaml)     |
+| app-cronjob.yaml         | Create a cronjob for every hour, and run image bash with some testing                                                         | CronJob that runs every hour and starts a container with bash         | [app-cronjob.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-cronjob.yaml)               |
+| app-job.yaml             | Create a pod with a job, for sync data from host to volume which is used by pod                                               | Job that syncs data from host directory to volume used by pod         | [app-job.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-job.yaml)                       |
+| app-multicontainer.yaml  | Create a multicontainer manifest                                                                                              | Pod with two containers: main app and sidecar                         | [app-multicontainer.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-multicontainer.yaml) |
+| app-resources.yaml       | Create manifest with resources for Probe's                                                                                    | Pod with liveness and readiness probes and resource requests/limits   | [app-resources.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-resources.yaml)           |
+| app-secret-env.yaml      | Create manifest for secret env                                                                                                | Pod that uses secret to set environment variables                     | [app-secret-env.yaml](https://github.com/itopsandrii/k8s_prompts/yaml/app-secret-env.yaml)         |
+
+---
